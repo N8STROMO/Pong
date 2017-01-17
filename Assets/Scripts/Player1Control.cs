@@ -41,7 +41,6 @@ public class Player1Control : MonoBehaviour {
 		else 
 		{
 			rb2d.velocity = Vector2.zero;
-			
 		}
 	}
 

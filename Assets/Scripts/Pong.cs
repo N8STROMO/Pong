@@ -12,13 +12,9 @@ public class Pong : MonoBehaviour {
     //Give access to GameManager class
     public GameManager manager;
 
-    public Player1Control player1;
-    public Player2Control player2;
-
     //Create varaible to control speed
     public float initialXSpeed;
     public float initialYSpeed;
-    private object rb2b;
 
     //Creates behavior of pong on start. Instantiated new Vector 2 to control intial 
     //speed of pong. Could this be "void Start()"?
@@ -28,16 +24,10 @@ public class Pong : MonoBehaviour {
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    //private void OnTriggerEnter()
-    // {
-    //     rb2d.velocity = Vector3.Reflect(-rb2d.velocity, this.transform.forward);
-    //
-    // }
-
     //Moniters collision with box colliders in order to report score increase to GameManager
+
     void OnTriggerEnter2D(Collider2D other)
     {
-
         //If the gameObject intidenfied with tag collides with bounds
         if (other.gameObject.CompareTag("Bound"))
         {
@@ -58,10 +48,26 @@ public class Pong : MonoBehaviour {
             {
                 manager.playerOneScored();
             }
-
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("Paddle"))
+        {
+            // Figure out how far up or down the ball hit the paddle
+            float offsetFromCenter = rb2d.transform.position.y - other.transform.position.y;
+            float otherHeight = other.gameObject.GetComponent<Collider2D>().bounds.size.y;
+            // Get the fraction from -1(bottom) to 1(top) of where the ball hit paddle 
+            float fractionFromCenter = offsetFromCenter / (otherHeight / 2);
+            
+            Vector2 oldVelocity = rb2d.velocity;
+            // Scale y velocity to the fraction of where we hit the paddle by the current x velocity
+            float newYVelocity = fractionFromCenter * oldVelocity.x;
+            // Set the new velocity
+            rb2d.velocity = new Vector2(oldVelocity.x, newYVelocity);
+        }
+    }
 
     void ResetPong() 
      {
@@ -73,6 +79,5 @@ public class Pong : MonoBehaviour {
         initialYSpeed = Mathf.Clamp(initialYSpeed, initialXSpeed, maxSpeed);
 
         rb2d.velocity = new Vector2(initialXSpeed, initialYSpeed);
-
     }
 }
