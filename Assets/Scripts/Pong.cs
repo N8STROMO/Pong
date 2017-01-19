@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Pong : MonoBehaviour {
-    Random number = new Random();
 
     public float maxSpeed;
 

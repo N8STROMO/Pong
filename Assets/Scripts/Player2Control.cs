@@ -5,7 +5,7 @@ public class Player2Control : MonoBehaviour {
     public GameObject pong;
     public float maxSpeed;
     public float speed;
-    public Rigidbody2D rb2d;
+    private Rigidbody2D rb2d;
     
     void Start()
     {
