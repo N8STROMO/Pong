@@ -8,13 +8,17 @@ public class Player1Control : MonoBehaviour {
 	//Created variable to control speed
 	public float speed;
 
-	//Creates pong on start of game 
+	/// <summary>
+    /// On first frame
+    /// </summary>
 	void Start() 
 	{
 		rb2d = GetComponent<Rigidbody2D> ();	
 	}
 
-	//Updates with every new physics iteration 
+	/// <summary>
+    /// On every physics itteration
+    /// </summary>
 	void FixedUpdate()
 	{
 		//Created two boolean variables to determine if up or down arrow is pressed
@@ -43,5 +47,4 @@ public class Player1Control : MonoBehaviour {
 			rb2d.velocity = Vector2.zero;
 		}
 	}
-
 }

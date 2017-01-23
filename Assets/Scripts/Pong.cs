@@ -1,30 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Pong : MonoBehaviour {
 
-    public float maxSpeed;
-
     private Rigidbody2D rb2d;
-    
-    //Give access to GameManager class
     public GameManager manager;
-
-    //Create varaible to control speed
     public float initialXSpeed;
     public float initialYSpeed;
+    public float maxSpeed;
 
-    //Creates behavior of pong on start. Instantiated new Vector 2 to control intial 
-    //speed of pong. Could this be "void Start()"?
-    void Awake()
+    /// <summary>
+    /// Creates behavior of pong on start. Instantiated new Vector 2 to control intial 
+    /// </summary>
+    void Start()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2(-initialXSpeed, initialYSpeed);
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    //Moniters collision with box colliders in order to report score increase to GameManager
-
+    /// <summary>
+    /// Moniters collision with box colliders in order to report score increase to GameManager
+    /// </summary>
+    /// <param name="other"></param>
     void OnTriggerEnter2D(Collider2D other)
     {
         //If the gameObject intidenfied with tag collides with bounds
@@ -50,6 +46,10 @@ public class Pong : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="other"></param>
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Paddle"))
@@ -68,6 +68,9 @@ public class Pong : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Resets Pong
+    /// </summary>
     void ResetPong() 
      {
         transform.position = new Vector3(0, 0, 0);

@@ -7,11 +7,17 @@ public class Player2Control : MonoBehaviour {
     public float speed;
     private Rigidbody2D rb2d;
     
+    /// <summary>
+    /// On first frame
+    /// </summary>
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     void FixedUpdate () {
         float pongYPos = pong.transform.position.y;
 

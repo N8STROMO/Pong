@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-//Added to namespace in order to use Text class
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 using UnityEngine;
 
 
@@ -19,8 +16,10 @@ public class GameManager : MonoBehaviour {
 	private int playerOneScore = 0; 
 	private int playerTwoScore = 0;
 
-	//Created method to update playerOneScore vararible and PlayerOneText text
-	public void playerOneScored () 
+    /// <summary>
+    /// Update playerOneScore vararible and PlayerOneText text
+    /// </summary>
+    public void playerOneScored () 
 	{
 		playerOneScore++;
 		playerOneText.text = playerOneScore + "";
@@ -28,14 +27,13 @@ public class GameManager : MonoBehaviour {
 
     }
 
-	//Created mthod to update playerTwoScore variable and PlayerTwoText text
-	public void playerTwoScored () 
+    /// <summary>
+    /// Update playerTwoScore variable and PlayerTwoText text
+    /// </summary>
+    public void playerTwoScored () 
 	{
 		playerTwoScore++;
 		playerTwoText.text = playerTwoScore + "";
         player2Control.IncreaseSpeed();
 	}
-
-
-
 }
