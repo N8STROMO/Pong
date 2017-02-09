@@ -4,16 +4,16 @@ public class Pong : MonoBehaviour {
 
     private Rigidbody2D rb2d;
     public GameManager manager;
-    public float initialXSpeed;
-    public float initialYSpeed;
+    public float XSpeed;
+    public float YSpeed;
     public float maxSpeed;
 
     /// <summary>
-    /// Creates behavior of pong on start. Instantiated new Vector 2 to control intial 
+    /// On first frame
     /// </summary>
     void Start()
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(-initialXSpeed, initialYSpeed);
+        GetComponent<Rigidbody2D>().velocity = new Vector2(-XSpeed, YSpeed);
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -23,22 +23,20 @@ public class Pong : MonoBehaviour {
     /// <param name="other"></param>
     void OnTriggerEnter2D(Collider2D other)
     {
-        //If the gameObject intidenfied with tag collides with bounds
+        //If the gameObject collides with bounds
         if (other.gameObject.CompareTag("Bound"))
         {
 
             ResetPong();
 
-            //If the pong collides with Player 1 bounds tell GameManager to execute method:
-            //playerTwoScored()
+            //If the pong collides with Player 1 bounds increases playerTwo's score 
             if (other.name.Equals("Player 1 Bounds"))
             {
                 manager.playerTwoScored();
 
             }
 
-            //If the pong collides with Player 2 bounds tell GameManager to execute method:
-            //playerOneScored()
+            //If the pong collides with Player 2 bounds increase playerOne's score
             if (other.name.Equals("Player 2 Bounds"))
             {
                 manager.playerOneScored();
@@ -75,11 +73,13 @@ public class Pong : MonoBehaviour {
      {
         transform.position = new Vector3(0, 0, 0);
 
-        initialXSpeed++;
-        initialYSpeed++;
-        initialXSpeed = Mathf.Clamp(initialXSpeed, initialXSpeed, maxSpeed);
-        initialYSpeed = Mathf.Clamp(initialYSpeed, initialXSpeed, maxSpeed);
+        XSpeed++;
+        YSpeed++;
 
-        rb2d.velocity = new Vector2(initialXSpeed, initialYSpeed);
+        //Puts a cap on the velocity of the pong
+        XSpeed = Mathf.Clamp(XSpeed, XSpeed, maxSpeed);
+        YSpeed = Mathf.Clamp(YSpeed, XSpeed, maxSpeed);
+
+        rb2d.velocity = new Vector2(XSpeed, YSpeed);
     }
 }

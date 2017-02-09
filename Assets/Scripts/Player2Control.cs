@@ -16,9 +16,10 @@ public class Player2Control : MonoBehaviour {
     }
 
     /// <summary>
-    /// 
+    /// Compares the position of the pong with the position of the opponents paddle
+    /// A basic AI
     /// </summary>
-    void FixedUpdate () {
+    void Update () {
         float pongYPos = pong.transform.position.y;
 
         if (pongYPos > transform.position.y)
@@ -32,6 +33,9 @@ public class Player2Control : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public void IncreaseSpeed()
     {
         speed++;

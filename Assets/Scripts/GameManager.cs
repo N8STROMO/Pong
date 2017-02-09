@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	//Holding reference to playerOneScore Text and playerTwoScore Text
-	public Text playerOneText;
-	public Text playerTwoText;
-
+	public Player2Control player2Control;
     public GameObject pongPrefab;
-
-    public Player2Control player2Control;
-
-	//Created two varaibles to store player's score
-	private int playerOneScore = 0; 
+    public Text playerOneText;
+	public Text playerTwoText;
+    private int playerOneScore = 0; 
 	private int playerTwoScore = 0;
+    
 
     /// <summary>
-    /// Update playerOneScore vararible and PlayerOneText text
+    /// Update playerOneScore when playerTwo scores and update PlayerOneText text
     /// </summary>
     public void playerOneScored () 
 	{
@@ -28,7 +24,7 @@ public class GameManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// Update playerTwoScore variable and PlayerTwoText text
+    /// Update playerTwoScore when playerOne scores and update PlayerTwoText text
     /// </summary>
     public void playerTwoScored () 
 	{

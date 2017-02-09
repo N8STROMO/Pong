@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 
 public class Player1Control : MonoBehaviour {
-
-	//Created Rigidbody2D varible to control the playerOne sprite  
+ 
 	Rigidbody2D rb2d;
-
-	//Created variable to control speed
 	public float speed;
 
 	/// <summary>
@@ -27,8 +24,8 @@ public class Player1Control : MonoBehaviour {
 
 	
 		//Controls the movemnt based on which arrow key is selected 
-		//Instantiated new Vector2 class taking x and y arguments within each branch
-		//of conidtional statement to control movement. First argument is 0; 
+		//Instantiated new Vector2 class taking x and y arguments (paddle speed) within each branch
+		//of conidtional statement to control movement. First argument is 0; the paddle does not move in the x direction
 		//playerOne sprite does not move horizontally
 		if (movementUp) 
 		{
