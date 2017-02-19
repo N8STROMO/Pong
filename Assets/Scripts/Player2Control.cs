@@ -19,7 +19,7 @@ public class Player2Control : MonoBehaviour {
     /// Compares the position of the pong with the position of the opponents paddle
     /// A basic AI
     /// </summary>
-    void Update () {
+    void FixedUpdate () {
         float pongYPos = pong.transform.position.y;
 
         if (pongYPos > transform.position.y)
@@ -39,6 +39,6 @@ public class Player2Control : MonoBehaviour {
     public void IncreaseSpeed()
     {
         speed++;
-        speed = Mathf.Clamp(speed, 5, maxSpeed);
+        speed = Mathf.Clamp(speed, speed, maxSpeed);
     } 
 }
